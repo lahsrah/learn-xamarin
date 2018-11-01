@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:LearnXamarin"
+             x:Class="LearnXamarin.Views.MainPage">
+
+    <StackLayout Padding="0,20,0,0">
+        <!-- Place new controls here -->
+        <Label Text="{Binding Message}" 
+           HorizontalOptions="Center"
+           VerticalOptions="Start" />
+
+
+        <Button Text="XKCD"
+                Command="{Binding ShowXkcdCommand}"
+                VerticalOptions="Start"
+                HorizontalOptions="Center">
+        </Button>
+
+    </StackLayout>
+
+</ContentPage>
