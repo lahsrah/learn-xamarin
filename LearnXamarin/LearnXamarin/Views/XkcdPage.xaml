@@ -1,12 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:valueConverters="clr-namespace:LearnXamarin.ValueConverters;assembly=LearnXamarin"
              x:Class="LearnXamarin.Views.XkcdPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <valueConverters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="XKCD!!!!!!!!"
-                VerticalOptions="CenterAndExpand" 
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Today's Cartoon" HorizontalOptions="Center" Command="{Binding LoadTodayCartoonCommand}"></Button>
+                <Button Text="Random Cartoon" HorizontalOptions="Center" Command="{Binding LoadRandomCartoonCommand}"></Button>
+            </StackLayout>
+            <Label Text="{Binding CartoonTitle}" IsVisible="{Binding IsLoading, Converter={StaticResource InverseBooleanConverter}}"
+                VerticalOptions="Start" 
                 HorizontalOptions="CenterAndExpand" />
+            <Image Source="{Binding CartoonImage}" IsVisible="{Binding IsLoading, Converter={StaticResource InverseBooleanConverter}}"
+                   VerticalOptions="FillAndExpand" 
+                   HorizontalOptions="FillAndExpand"
+                   Aspect="AspectFit" />
+            <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}">
+
+            </ActivityIndicator>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
