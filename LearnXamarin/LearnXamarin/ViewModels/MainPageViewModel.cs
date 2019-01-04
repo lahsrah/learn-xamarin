@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace LearnXamarin.ViewModels
 {
-    public class MainPageViewModel
+    public class MainPageViewModel : ViewModelBase
     {
         public Command ShowXkcdCommand { get; }
 
